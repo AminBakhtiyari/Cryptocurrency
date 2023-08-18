@@ -21,6 +21,10 @@ android {
         versionName(Environments.Release.appVersionName)
 
         testInstrumentationRunner(Config.testRunner)
+
+        // Configs
+        buildConfigField("String", "BASE_URL", "\"" + Environments.Release.baseUrl + "\"")
+        buildConfigField("String", "API_KEY", "\"" + Environments.Release.apiKey + "\"")
     }
 
     buildTypes {
