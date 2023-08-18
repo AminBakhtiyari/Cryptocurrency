@@ -1,4 +1,4 @@
-package me.bakhtiyari.Cryptocurrency.data
+package me.bakhtiyari.cryptocurrency.presentation
 
 import org.junit.Test
 

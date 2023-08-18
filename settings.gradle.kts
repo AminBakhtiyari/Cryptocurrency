@@ -1,4 +1,4 @@
-rootProject.name = "Cryptocurrency"
+rootProject.name = "cryptocurrency"
 include(":domain")
 include(":data")
 include(":presentation")

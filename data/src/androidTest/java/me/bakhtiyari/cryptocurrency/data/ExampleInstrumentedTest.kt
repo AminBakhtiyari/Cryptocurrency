@@ -1,4 +1,4 @@
-package me.bakhtiyari.Cryptocurrency.data
+package me.bakhtiyari.cryptocurrency.data
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("me.bakhtiyari.Cryptocurrency.data", appContext.packageName)
+        assertEquals("me.bakhtiyari.cryptocurrency.data", appContext.packageName)
     }
 }
