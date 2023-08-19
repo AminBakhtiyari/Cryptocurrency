@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">cryptocurrency</string>
+    <string name="app_name">Cryptocurrency</string>
+    <string name="app_description">Android Developer test project</string>
+    <string name="my_name">Amin Bakhtiyari</string>
+
+    <string name="loading">Loading …,\nPlease wait</string>
+    <string name="yes">yes</string>
+    <string name="not_now">Not now</string>
 </resources>
