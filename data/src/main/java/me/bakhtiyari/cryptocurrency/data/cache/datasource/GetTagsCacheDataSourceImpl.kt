@@ -13,7 +13,7 @@ class GetTagsCacheDataSourceImpl @Inject constructor(
 ) : GetTagsCacheDataSource {
 
 
-    override suspend fun getTags(): PagingSource<Int, TagCacheEntity> = tagDao.getTags()
+    override fun getTags(): PagingSource<Int, TagCacheEntity> = tagDao.getTags()
 
     override suspend fun saveTags(tags: List<TagCacheEntity>) {
         tagDao.addTags(*tags.toTypedArray())
@@ -27,9 +27,13 @@ class GetTagsCacheDataSourceImpl @Inject constructor(
         remoteKeyDao.insertOrReplace(remoteKey)
     }
 
-    override suspend fun remoteKeyByQuery(query: String): RemoteKeyEntity = remoteKeyDao.remoteKeyByQuery(query)
+    override suspend fun insertOrReplaceAllRemoteKey(remoteKeys: List<RemoteKeyEntity>) {
+        remoteKeyDao.insertOrReplaceAll(*remoteKeys.toTypedArray())
+    }
 
-    override suspend fun clearRemoteKeyByQuery(query: String) {
-        remoteKeyDao.deleteByQuery(query)
+    override suspend fun remoteKeyByTagId(tagId: Long): RemoteKeyEntity = remoteKeyDao.remoteKeyByTagId(tagId)
+
+    override suspend fun clearRemoteKeys() {
+        remoteKeyDao.clearRemoteKeys()
     }
 }

@@ -8,7 +8,8 @@ import me.bakhtiyari.cryptocurrency.data.cache.utils.CacheConstants
 @Entity(tableName = CacheConstants.REMOTE_KEY_TABLE_NAME)
 data class RemoteKeyEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = 0,
+    @ColumnInfo(name = "tag_id")
+    val tagId: Long? = 0,
     @ColumnInfo(name = "totalCount")
     val totalCount: Int?,
     @ColumnInfo(name = "nextKey")

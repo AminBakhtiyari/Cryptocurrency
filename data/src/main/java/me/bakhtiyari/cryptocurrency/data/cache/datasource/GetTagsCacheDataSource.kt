@@ -6,10 +6,11 @@ import me.bakhtiyari.cryptocurrency.data.cache.model.TagCacheEntity
 
 
 interface GetTagsCacheDataSource {
-    suspend fun getTags(): PagingSource<Int, TagCacheEntity>
+    fun getTags(): PagingSource<Int, TagCacheEntity>
     suspend fun saveTags(tags: List<TagCacheEntity>)
     suspend fun clearAllData()
     suspend fun insertOrReplaceRemoteKey(remoteKey: RemoteKeyEntity)
-    suspend fun remoteKeyByQuery(query: String): RemoteKeyEntity
-    suspend fun clearRemoteKeyByQuery(query: String)
+    suspend fun insertOrReplaceAllRemoteKey(remoteKeys: List<RemoteKeyEntity>)
+    suspend fun remoteKeyByTagId(tagId: Long): RemoteKeyEntity
+    suspend fun clearRemoteKeys()
 }

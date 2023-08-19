@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+    // Modules
+    implementation(project(Modules.domain))
     // Kotlin
     implementation(DataDep.kotlin)
     // JavaX
