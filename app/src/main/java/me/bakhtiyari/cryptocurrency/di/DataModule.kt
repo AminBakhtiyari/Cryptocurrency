@@ -12,10 +12,14 @@ import me.bakhtiyari.cryptocurrency.data.cache.dao.TagDao
 import me.bakhtiyari.cryptocurrency.data.cache.database.TagsDatabase
 import me.bakhtiyari.cryptocurrency.data.cache.datasource.GetTagsCacheDataSource
 import me.bakhtiyari.cryptocurrency.data.cache.datasource.GetTagsCacheDataSourceImpl
+import me.bakhtiyari.cryptocurrency.data.errorHandler.ErrorHandlerImpl
 import me.bakhtiyari.cryptocurrency.data.remote.api.ApiService
 import me.bakhtiyari.cryptocurrency.data.remote.datasource.GetTagsRemoteDataSource
 import me.bakhtiyari.cryptocurrency.data.remote.datasource.GetTagsRemoteDataSourceImpl
 import me.bakhtiyari.cryptocurrency.data.remote.di.createService
+import me.bakhtiyari.cryptocurrency.data.repository.GetTagsRepositoryImpl
+import me.bakhtiyari.cryptocurrency.domain.errorHandler.ErrorHandler
+import me.bakhtiyari.cryptocurrency.domain.repository.GetTagsRepository
 import javax.inject.Singleton
 
 @Module
@@ -56,5 +60,17 @@ object DataModule {
     @Singleton
     fun provideGetTagsCacheDataSource(getTagsCacheDataSourceImpl: GetTagsCacheDataSourceImpl): GetTagsCacheDataSource {
         return getTagsCacheDataSourceImpl
+    }
+
+    @Provides
+    @Singleton
+    fun provideErrorHandler(errorHandlerImpl: ErrorHandlerImpl): ErrorHandler {
+        return errorHandlerImpl
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetTagsRepository(getTagsRepositoryImpl: GetTagsRepositoryImpl): GetTagsRepository {
+        return getTagsRepositoryImpl
     }
 }

@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface ApiService {
 
-    @POST("v2/tags")
+    @POST("/v2/tags")
     suspend fun getTags(
         @Body body: GetTagsRequestBodyModel
     ): GetTagsResponseModel
