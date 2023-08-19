@@ -23,13 +23,13 @@ class GetTagsRepositoryImpl @Inject constructor(
         private const val PAGE_SIZE = 100
     }
 
-    override suspend fun getTags(): Flow<PagingData<TagModel>> = Pager(
+    override suspend fun getTags(query: String): Flow<PagingData<TagModel>> = Pager(
         config = PagingConfig(
             pageSize = PAGE_SIZE,
             enablePlaceholders = false
         ),
         pagingSourceFactory = {
-            cacheDataSource.getTags()
+            cacheDataSource.getTags(query)
         },
         remoteMediator = GetTagsRemoteMediator(
             cacheDataSource = cacheDataSource,

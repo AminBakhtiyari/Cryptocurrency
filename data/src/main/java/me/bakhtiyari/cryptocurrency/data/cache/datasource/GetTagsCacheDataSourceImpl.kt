@@ -13,7 +13,7 @@ class GetTagsCacheDataSourceImpl @Inject constructor(
 ) : GetTagsCacheDataSource {
 
 
-    override fun getTags(): PagingSource<Int, TagCacheEntity> = tagDao.getTags()
+    override fun getTags(query: String): PagingSource<Int, TagCacheEntity> = tagDao.getTags(query)
 
     override suspend fun saveTags(tags: List<TagCacheEntity>) {
         tagDao.addTags(*tags.toTypedArray())

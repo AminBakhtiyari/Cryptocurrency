@@ -89,9 +89,7 @@ class SearchTagFragment : BaseFragment<FragmentSearchTagBinding, SearchTagsViewM
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        if (newText?.isNotEmpty() == true && newText.length >= 3) {
-            viewModel.searchQuery.value = newText
-        }
+        viewModel.searchQuery.value = newText
         return false
     }
 

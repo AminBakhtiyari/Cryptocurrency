@@ -17,5 +17,14 @@ class GetTagsUseCase(
         contextProvider = contextProvider
     ) {
 
-    override suspend fun buildUseCaseObservable(): Flow<PagingData<TagModel>> = repository.getTags()
+    private lateinit var query: String
+
+    fun setParameters(
+        query: String,
+    ): GetTagsUseCase {
+        this.query = query
+        return this
+    }
+
+    override suspend fun buildUseCaseObservable(): Flow<PagingData<TagModel>> = repository.getTags(query = query)
 }

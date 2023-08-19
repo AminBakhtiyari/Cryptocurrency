@@ -1,5 +1,6 @@
 package me.bakhtiyari.cryptocurrency.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -28,26 +29,17 @@ class SearchTagsViewModel @Inject constructor(
     val isEmptyList = MutableLiveData(false)
     val isShowList = MutableLiveData(false)
 
-    init {
-        getTags()
-    }
-
-
-    private fun getTags() {
-        getTagsUseCase.execute { result ->
+    fun search() {
+        getTagsUseCase.setParameters(query = searchQuery.value ?: "").execute { result ->
             result.handleResult(successBlock = ::onGetTagsResult, failureBlock = ::handleError)
         }
     }
 
     private fun onGetTagsResult(data: PagingData<TagModel>) {
-
-        this.searchResult.postValue(data.map {
+        searchResult.postValue(data.map {
             mapper.mapTo(it)
         })
-        this.searchResult.cachedIn(viewModelScope)
     }
-
-    fun search() {}
 
     fun onSelectedTag(tag: TagUIModel) {
         _selectedTagEvent.value = tag

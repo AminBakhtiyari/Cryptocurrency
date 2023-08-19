@@ -10,8 +10,8 @@ import me.bakhtiyari.cryptocurrency.data.cache.model.TagCacheEntity
 @Dao
 interface TagDao {
 
-    @Query("SELECT * FROM tags")
-    fun getTags(): PagingSource<Int, TagCacheEntity>
+    @Query("SELECT * FROM tags WHERE (:query = '' OR symbol LIKE '%' || :query || '%' OR name LIKE '%' || :query || '%')")
+    fun getTags(query: String): PagingSource<Int, TagCacheEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addTags(vararg images: TagCacheEntity)

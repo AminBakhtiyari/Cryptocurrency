@@ -6,5 +6,5 @@ import me.bakhtiyari.cryptocurrency.domain.model.TagModel
 
 
 interface GetTagsRepository {
-    suspend fun getTags(): Flow<PagingData<TagModel>>
+    suspend fun getTags(query: String): Flow<PagingData<TagModel>>
 }
